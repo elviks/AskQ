@@ -63,7 +63,7 @@ const App = () => {
           >
                {/* Sticky Navbar */}
                <nav className="sticky top-0 z-10 bg-gray-900 w-full text-center p-6 text-3xl md:text-5xl font-bold shadow-md">
-                    AskQ
+                    AskQ <pre className="text-sm mt-3">ChatGPT, but better</pre>
                </nav>
 
                {/* Main Chat Area */}
@@ -90,7 +90,7 @@ const App = () => {
                               {quests.map((quest, index) => (
                                    <div
                                         key={index}
-                                        className="flex flex-col gap-2"
+                                        className="flex flex-col gap-4"
                                    >
                                         <div className="self-end bg-gray-700 px-4 py-2 rounded-lg max-w-full">
                                              {quest}
