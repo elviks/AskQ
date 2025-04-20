@@ -61,12 +61,10 @@ const App = () => {
                className="bg-gray-800 text-white min-h-screen flex flex-col"
                style={{ fontFamily: "Montserrat" }}
           >
-               {/* Sticky Navbar */}
                <nav className="sticky top-0 z-10 bg-gray-900 w-full text-center p-6 text-3xl md:text-5xl font-bold shadow-md">
                     AskQ <pre className="text-sm mt-3">ChatGPT, but better</pre>
                </nav>
 
-               {/* Main Chat Area */}
                <main className="flex-1 overflow-y-auto px-4 py-6 md:px-10">
                     {!hasStarted ? (
                          <div className="flex flex-1 items-center justify-center h-[calc(100vh-120px)]">
@@ -111,7 +109,6 @@ const App = () => {
                     )}
                </main>
 
-               {/* Input Footer */}
                <footer className="bg-gray-800 w-full px-4 py-6 md:px-10 sticky bottom-0">
                     <div className="flex items-center max-w-2xl mx-auto">
                          <input
