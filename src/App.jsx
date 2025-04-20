@@ -143,6 +143,7 @@ import React, { useState } from "react";
 import "@fontsource/roboto";
 import "@fontsource/montserrat";
 import { QWEN_KEY } from "../config";
+import chatService from "./services/chatService";
 
 const apiKey = QWEN_KEY;
 
@@ -158,41 +159,9 @@ const App = () => {
                setMessage("");
                setLoading(true);
           }
-
-          try {
-               const response = await fetch(
-                    "https://openrouter.ai/api/v1/chat/completions",
-                    {
-                         method: "POST",
-                         headers: {
-                              Authorization: `Bearer ${apiKey}`,
-                              "Content-Type": "application/json",
-                         },
-                         body: JSON.stringify({
-                              model: "qwen/qwen2.5-vl-32b-instruct:free",
-                              messages: [
-                                   {
-                                        role: "user",
-                                        content: message,
-                                   },
-                              ],
-                         }),
-                    }
-               );
-               const data = await response.json();
-               const messageRespondFromApi =
-                    data.choices?.[0]?.message?.content ||
-                    "No response received.";
-               setResponses([...responses, messageRespondFromApi]);
-          } catch (error) {
-               console.log(error);
-               setResponses([
-                    ...responses,
-                    "An error occurred while responding",
-               ]);
-          } finally {
-               setLoading(false);
-          }
+          const reply = await chatService(message);
+          setResponses([...responses, reply]);
+          setLoading(false);
      };
 
      const hasStarted = quests.length > 0;
@@ -202,12 +171,10 @@ const App = () => {
                className="bg-gray-800 text-white min-h-screen flex flex-col"
                style={{ fontFamily: "Montserrat" }}
           >
-               {/* Sticky Navbar */}
                <nav className="sticky top-0 z-10 bg-gray-900 w-full text-center p-6 text-3xl md:text-5xl font-bold shadow-md">
                     AskQ
                </nav>
 
-               {/* Main Chat Area */}
                <main className="flex-1 overflow-y-auto px-4 py-6 md:px-10">
                     {!hasStarted ? (
                          <div className="flex flex-1 items-center justify-center h-[calc(100vh-120px)]">
@@ -252,7 +219,6 @@ const App = () => {
                     )}
                </main>
 
-               {/* Input Footer */}
                <footer className="bg-gray-800 w-full px-4 py-6 md:px-10 sticky bottom-0">
                     <div className="flex items-center max-w-2xl mx-auto">
                          <input
