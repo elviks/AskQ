@@ -13,8 +13,8 @@ A modern chatbot interface powered by Qwen AI. This project provides a clean and
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/qwen-bot.git
-cd qwen-bot
+git clone https://github.com/elviks/AskQ.git
+cd AskQ
 ```
 
 2. Install dependencies:
