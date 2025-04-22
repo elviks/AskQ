@@ -62,7 +62,7 @@ const App = () => {
                style={{ fontFamily: "Montserrat" }}
           >
                <nav className="sticky top-0 z-10 bg-gray-900 w-full text-center p-6 text-3xl md:text-5xl font-bold shadow-md">
-                    AskQ <pre className="text-sm mt-3">ChatGPT, but better</pre>
+                    AskQ <pre className="text-sm mt-3">ChatGPT, but better.</pre>
                </nav>
 
                <main className="flex-1 overflow-y-auto px-4 py-6 md:px-10">
